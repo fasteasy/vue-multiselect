@@ -15,7 +15,7 @@
       <div 
         class="multiselect__reset" 
         @click.prevent="reset" 
-        v-show="internalValue.length && resetButton">&times;</div>
+        v-if="internalValue.length && resetButton">&times;</div>
       <slot name="clear" :search="search"></slot>
       <div ref="tags" class="multiselect__tags">
         <div class="multiselect__tags-wrap" v-show="visibleValue.length > 0">

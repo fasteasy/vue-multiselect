@@ -12,6 +12,7 @@ div
     placeholder="Pick some"
     label="name",
     track-by="name"
+    :reset-button="true"
   )
     template(slot="tag", scope="props")
       span.custom__tag
