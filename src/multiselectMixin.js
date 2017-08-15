@@ -350,6 +350,11 @@ export default {
     }
   },
   methods: {
+    reset () {
+      this.internalValue = []
+      this.deactivate()
+      this.search = ''
+    },
     /**
      * Converts the internal value to the external value
      * @returns {Object||Array||String||Integer} returns the external value

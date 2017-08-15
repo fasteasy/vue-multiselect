@@ -12,6 +12,10 @@
       <slot name="caret" :toggle="toggle">
         <div @mousedown.prevent.stop="toggle()" class="multiselect__select"></div>
       </slot>
+      <div 
+        class="multiselect__reset" 
+        @click.prevent="reset" 
+        v-show="internalValue.length">&times;</div>
       <slot name="clear" :search="search"></slot>
       <div ref="tags" class="multiselect__tags">
         <div class="multiselect__tags-wrap" v-show="visibleValue.length > 0">
@@ -362,6 +366,21 @@ fieldset[disabled] .multiselect {
 .multiselect--active:not(.multiselect--above) .multiselect__tags {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.multiselect__reset {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  font-size: 20px;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  text-align: center;
+  margin-top: -0.5em;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .multiselect--active .multiselect__select {
