@@ -73,6 +73,13 @@ export default {
   },
   props: {
     /**
+     * Enable|disable reset button
+     */
+    resetButton: {
+      type: Boolean,
+      default: false
+    },
+    /**
      * Decide whether to filter the results based on search query.
      * Useful for async filtering, where we search through more complex data.
      * @type {Boolean}
