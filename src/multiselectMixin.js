@@ -361,6 +361,7 @@ export default {
       this.internalValue = []
       this.deactivate()
       this.search = ''
+      this.$emit('input', this.getValue(), this.id)
     },
     /**
      * Converts the internal value to the external value
