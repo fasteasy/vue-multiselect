@@ -12,10 +12,6 @@
       <slot name="caret" :toggle="toggle">
         <div @mousedown.prevent.stop="toggle()" class="multiselect__select"></div>
       </slot>
-      <div 
-        class="multiselect__reset" 
-        @click.prevent="reset" 
-        v-if="internalValue.length && resetButton">&times;</div>
       <slot name="clear" :search="search"></slot>
       <div ref="tags" class="multiselect__tags">
         <div class="multiselect__tags-wrap" v-show="visibleValue.length > 0">
@@ -60,6 +56,19 @@
           v-text="currentOptionLabel">
         </span>
       </div>
+
+      <div class="multiselect__inner-controls">
+        <div class="multiselect__inner-controls-item">
+          <slot name="inner-controls"></slot>
+        </div>
+        <div class="multiselect__inner-controls-item">
+          <div
+            class="multiselect__reset"
+            @click.prevent="reset"
+            v-if="internalValue.length && resetButton">&times;</div>
+        </div>
+      </div>
+
       <transition name="multiselect">
         <div
           class="multiselect__content-wrapper"
@@ -274,7 +283,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
 fieldset[disabled] .multiselect {
   pointer-events: none;
 }
@@ -368,17 +377,39 @@ fieldset[disabled] .multiselect {
   border-bottom-right-radius: 0;
 }
 
-.multiselect__reset {
-  display: block;
+.multiselect__inner-controls {
+  display: flex;
+  align-items: center;
   position: absolute;
+  right: 40px;
   top: 50%;
-  right: 30px;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 20px);
+  padding-left: 20px;
+  /*padding-bottom: 8px;*/
+  line-height: 1em;
+}
+
+.multiselect__inner-controls-item {
+  margin-right: 5px;
+    &:last-child {
+      margin-right: 0;
+   }
+}
+
+.multiselect__reset {
+  /*display: inline-block;*/
+  /*display: block;*/
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*right: 30px;*/
   font-size: 20px;
   width: 1em;
   height: 1em;
   line-height: 1em;
   text-align: center;
-  margin-top: -0.5em;
+  /*margin-top: -0.5em;*/
   cursor: pointer;
   z-index: 1;
 }
